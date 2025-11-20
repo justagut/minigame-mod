@@ -1,0 +1,24 @@
+package com.justagut.MinigameMod.event;
+
+
+import com.justagut.MinigameMod.entity.ModEntities;
+import com.justagut.MinigameMod.entity.client.MagmaBossModel;
+import com.justagut.MinigameMod.entity.custom.MagmaBossEntity;
+import com.justagut.MinigameMod.minigamemod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+
+@EventBusSubscriber(modid = minigamemod.MODID)
+public class ModEventBusEvents {
+    @SubscribeEvent
+    public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(MagmaBossModel.LAYER_LOCATION, MagmaBossModel::createBodyLayer);
+    }
+
+    @SubscribeEvent
+    public static void registerAttributes(EntityAttributeCreationEvent event) {
+        event.put(ModEntities.MAGMABOSS.get(), MagmaBossEntity.createAttributes().build());
+    }
+}

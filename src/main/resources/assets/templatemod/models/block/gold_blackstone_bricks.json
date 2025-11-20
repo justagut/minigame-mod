@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "templatemod:block/gold_blackstone_bricks"
-  }
-}
