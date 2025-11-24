@@ -14,6 +14,9 @@ public class ModItems {
             ("bismuth", ()-> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BRICKIFIER = ITEMS.register
             ("brickifier", ()-> new brickifier(new Item.Properties().durability(32)));
+    public static final DeferredItem<Item> PLASTIC_PLATE = ITEMS.register
+            ("plastic_plate", ()-> new Item(new Item.Properties()));
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

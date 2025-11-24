@@ -3,9 +3,12 @@ package com.justagut.MinigameMod.entity.custom;
 
 import com.justagut.MinigameMod.entity.goals.summon_magmahelper_goal;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
@@ -15,7 +18,12 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Fireball;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
+
+import static java.lang.Math.abs;
 
 public class MagmaBossEntity extends Monster {
     public final AnimationState idleAnimationState = new AnimationState();
@@ -23,7 +31,7 @@ public class MagmaBossEntity extends Monster {
     private int idleAnimationTimeout = 0;
     public boolean doinggoal = false;
     public int selectedgoal = 0;
-
+    public Vec3 oldvelocity = new Vec3(0,0,0);
 
     public MagmaBossEntity(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
@@ -92,6 +100,16 @@ public class MagmaBossEntity extends Monster {
 
     @Override
     public void tick() {
+        if (this.verticalCollision){
+            this.setDeltaMovement(oldvelocity.x,-oldvelocity.y,oldvelocity.z);
+        } else if (this.horizontalCollision) {
+            if (this.getDeltaMovement().x-oldvelocity.x>0.1){
+                this.setDeltaMovement(-oldvelocity.x, oldvelocity.y, oldvelocity.z);
+            } else{
+                this.setDeltaMovement(oldvelocity.x, oldvelocity.y, -oldvelocity.z);
+            }
+        }
+        oldvelocity = this.getDeltaMovement();
         super.tick();
         if (doinggoal){
             selectedgoal = 0;
@@ -112,5 +130,11 @@ public class MagmaBossEntity extends Monster {
             // stop animation if the entity stops walking
             walkAnimationState.stop();
         }
+    }
+
+    @Override
+    public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
+        this.setDeltaMovement(1,1,1);
+        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 }
