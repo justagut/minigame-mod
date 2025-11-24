@@ -17,7 +17,7 @@ public class ModEntities {
 
     public static final Supplier<EntityType<MagmaBossEntity>> MAGMABOSS =
             ENTITY_TYPES.register("magmaboss", () -> EntityType.Builder.of(MagmaBossEntity::new,
-                    MobCategory.MONSTER).sized(2, 5).build("magmaboss"));
+                    MobCategory.MONSTER).sized((float)0.5, (float) 0.5).build("magmaboss"));
 
 
     public static void register(IEventBus eventBus) {
