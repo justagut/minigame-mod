@@ -1,6 +1,6 @@
 package com.justagut.MinigameMod.entity.client;
 
-import com.justagut.MinigameMod.entity.custom.MagmaBossEntity;
+import com.justagut.MinigameMod.entity.custom.BallBasics;
 import com.justagut.MinigameMod.minigamemod;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -11,7 +11,7 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 
-public class MagmaBossModel<T extends MagmaBossEntity> extends HierarchicalModel<T> {
+public class MagmaBossModel<T extends BallBasics> extends HierarchicalModel<T> {
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(minigamemod.MODID, "magmaboss"), "main");
     private final ModelPart body;
 
@@ -48,7 +48,7 @@ public class MagmaBossModel<T extends MagmaBossEntity> extends HierarchicalModel
     }
 
     @Override
-    public void setupAnim(MagmaBossEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(BallBasics entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
 
 
