@@ -83,7 +83,7 @@ public class minigamemod {
         public static void onClientSetup(FMLClientSetupEvent event) {
 
 
-            //EntityRenderers.register(ModEntities.TENNISBALL.get(), MagmaBossRenderer::new);
+           EntityRenderers.register(ModEntities.TENNISBALL.get(), MagmaBossRenderer::new);
         }
     }
 

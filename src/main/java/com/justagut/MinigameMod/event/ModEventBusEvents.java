@@ -13,11 +13,11 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 public class ModEventBusEvents {
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-       //event.registerLayerDefinition(MagmaBossModel.LAYER_LOCATION, MagmaBossModel::createBodyLayer);
+       event.registerLayerDefinition(MagmaBossModel.LAYER_LOCATION, MagmaBossModel::createBodyLayer);
     }
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
-        //event.put(ModEntities.TENNISBALL.get(), TennisBall.createAttributes().build());
+        event.put(ModEntities.TENNISBALL.get(), TennisBall.createAttributes().build());
     }
 }

@@ -35,6 +35,12 @@ public class BallBasics extends Monster {
     public boolean fireImmune() {
         return true;
     }
+    public void weight(Float counterweight){
+        weight = counterweight;
+    }
+    public void drag(Float counterdrag){
+        drag = counterdrag;
+    }
 
     @Override
     protected void checkFallDamage(double y, boolean onGround, BlockState state, BlockPos pos) {
