@@ -3,7 +3,6 @@ package com.justagut.MinigameMod;
 //hoi
 import com.justagut.MinigameMod.block.ModBlocks;
 import com.justagut.MinigameMod.entity.ModEntities;
-import com.justagut.MinigameMod.entity.client.MagmaBossRenderer;
 import com.justagut.MinigameMod.item.ModItems;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -84,7 +83,7 @@ public class minigamemod {
         public static void onClientSetup(FMLClientSetupEvent event) {
 
 
-           // EntityRenderers.register(ModEntities.MAGMABOSS.get(), MagmaBossRenderer::new);
+           EntityRenderers.register(ModEntities.TENNISBALL.get(), MagmaBossRenderer::new);
         }
     }
 

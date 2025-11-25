@@ -18,8 +18,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
-import static java.lang.Math.abs;
-
 public class BallBasics extends Monster {
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState walkAnimationState = new AnimationState();
@@ -36,6 +34,12 @@ public class BallBasics extends Monster {
     @Override
     public boolean fireImmune() {
         return true;
+    }
+    public void weight(Float counterweight){
+        weight = counterweight;
+    }
+    public void drag(Float counterdrag){
+        drag = counterdrag;
     }
 
     @Override
