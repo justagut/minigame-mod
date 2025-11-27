@@ -25,6 +25,7 @@ public class BallBasics extends Monster {
     public Vec3 oldvelocity = new Vec3(0,0,0);
     public float drag = 1.09F;
     public float weight = 1.01f;
+    public float bouncyness = 1;
 
     public BallBasics(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
@@ -40,6 +41,9 @@ public class BallBasics extends Monster {
     }
     public void drag(Float counterdrag){
         drag = counterdrag;
+    }
+    public void bouncyness(Float Bouncestrength){
+        bouncyness = Bouncestrength;
     }
 
     @Override
@@ -85,12 +89,12 @@ public class BallBasics extends Monster {
     @Override
     public void tick() {
         if (this.verticalCollision){
-            this.setDeltaMovement(oldvelocity.x,-oldvelocity.y,oldvelocity.z);
+            this.setDeltaMovement(oldvelocity.x,-oldvelocity.y*bouncyness,oldvelocity.z);
         } else if (this.horizontalCollision) {
             if (this.getDeltaMovement().x-oldvelocity.x>0.1){
-                this.setDeltaMovement(-oldvelocity.x, oldvelocity.y, oldvelocity.z);
+                this.setDeltaMovement(-oldvelocity.x*bouncyness, oldvelocity.y, oldvelocity.z);
             } else{
-                this.setDeltaMovement(oldvelocity.x, oldvelocity.y, -oldvelocity.z);
+                this.setDeltaMovement(oldvelocity.x, oldvelocity.y, -oldvelocity.z*bouncyness);
             }
         }
         oldvelocity = this.getDeltaMovement();

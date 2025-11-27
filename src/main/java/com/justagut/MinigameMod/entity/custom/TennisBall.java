@@ -20,4 +20,8 @@ public class TennisBall extends BallBasics{
         //if you make this to much its gonna speed up, so dont make it higher than ~1.1
     }
 
+    @Override
+    public void bouncyness(Float Bouncestrength) {
+        super.bouncyness(1f);
+    }
 }
