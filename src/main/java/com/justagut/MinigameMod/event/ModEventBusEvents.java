@@ -2,6 +2,7 @@ package com.justagut.MinigameMod.event;
 
 
 import com.justagut.MinigameMod.entity.ModEntities;
+import com.justagut.MinigameMod.entity.client.TennisBallModel;
 import com.justagut.MinigameMod.entity.custom.TennisBall;
 import com.justagut.MinigameMod.minigamemod;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -13,7 +14,7 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 public class ModEventBusEvents {
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-       event.registerLayerDefinition(MagmaBossModel.LAYER_LOCATION, MagmaBossModel::createBodyLayer);
+       event.registerLayerDefinition(TennisBallModel.LAYER_LOCATION, TennisBallModel::createBodyLayer);
     }
 
     @SubscribeEvent

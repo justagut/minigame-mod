@@ -22,6 +22,6 @@ public class TennisBall extends BallBasics{
 
     @Override
     public void bouncyness(Float Bouncestrength) {
-        super.bouncyness(1f);
+        super.bouncyness(0.9f);
     }
 }
