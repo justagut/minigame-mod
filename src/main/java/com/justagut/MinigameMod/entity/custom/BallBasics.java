@@ -73,7 +73,7 @@ public class BallBasics extends Monster {
     @Override
     public void tick() {
         if (this.verticalCollision){
-            this.setDeltaMovement(oldvelocity.x,-oldvelocity.y*bouncyness,oldvelocity.z);
+            this.setDeltaMovement(oldvelocity.x,-oldvelocity.y*bouncyness - 0.01,oldvelocity.z);
         } else if (this.horizontalCollision) {
             if (this.getDeltaMovement().x-oldvelocity.x>0.1){
                 this.setDeltaMovement(-oldvelocity.x*bouncyness, oldvelocity.y, oldvelocity.z);

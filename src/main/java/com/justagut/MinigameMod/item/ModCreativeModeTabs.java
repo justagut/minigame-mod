@@ -23,6 +23,7 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.BISMUTH);
                         output.accept(ModItems.BRICKIFIER);
+                        output.accept(ModItems.TENNIS_RACKET);
                     })
                     .build());
 
