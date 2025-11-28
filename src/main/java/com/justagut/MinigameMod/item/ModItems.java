@@ -17,7 +17,7 @@ public class ModItems {
     public static final DeferredItem<Item> PLASTIC_PLATE = ITEMS.register
             ("plastic_plate", ()-> new Item(new Item.Properties()));
     public static final DeferredItem<Item> TENNIS_RACKET = ITEMS.register
-            ("tennis_racket", ()-> new Item(new Item.Properties()));
+            ("tennis_racket", ()-> new Item(new Item.Properties().stacksTo(1)));
 
 
     public static void register(IEventBus eventBus) {
