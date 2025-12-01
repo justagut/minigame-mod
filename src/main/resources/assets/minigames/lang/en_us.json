@@ -1,9 +1,10 @@
 {
   "item.minigames.bismuth": "Bismuth",
   "item.minigames.brickifier": "brickifier",
+  "item.minigames.plastic_plate": "Plastic Plate",
 
   "block.minigames.gold_blackstone_bricks": "Gold Blackstone Bricks",
 
-  "creativetab.minigames.bismuth_items": "Bismuth Items",
+  "creativetab.minigames.general_items": "General Items",
   "creativetab.minigames.bismuth_blocks": "Bismuth Blocks"
 }

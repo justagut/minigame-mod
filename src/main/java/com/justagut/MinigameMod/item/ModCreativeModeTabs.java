@@ -17,18 +17,19 @@ public class ModCreativeModeTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, minigamemod.MODID);
 
     public static final Supplier<CreativeModeTab> BISMUTH_ITEMS_TAB =
-            CREATIVE_MODE_TAB.register("bismuth_items_tab", ()-> CreativeModeTab.builder()
+            CREATIVE_MODE_TAB.register("general_items_tab", ()-> CreativeModeTab.builder()
                     .icon(()-> new ItemStack(ModItems.BISMUTH.get()))
-                    .title(Component.translatable("creativetab.minigames.bismuth_items"))
+                    .title(Component.translatable("creativetab.minigames.general_items"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.BISMUTH);
                         output.accept(ModItems.BRICKIFIER);
+                        output.accept(ModItems.PLASTIC_PLATE);
                     })
                     .build());
 
     public static final Supplier<CreativeModeTab> BISMUTH_BLOCKS_TAB =
             CREATIVE_MODE_TAB.register("bismuth_blocks_tab", ()-> CreativeModeTab.builder()
-                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(minigamemod.MODID, "bismuth_items_tab"))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(minigamemod.MODID, "general_items_tab"))
                     .icon(()-> new ItemStack(ModBlocks.GOLD_BLACKSTONE_BRICKS.get()))
                     .title(Component.translatable("creativetab.minigames.bismuth_blocks"))
                     .displayItems((itemDisplayParameters, output) -> {
