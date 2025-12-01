@@ -19,12 +19,10 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 public class BallBasics extends Monster {
-    public final AnimationState idleAnimationState = new AnimationState();
-    public final AnimationState walkAnimationState = new AnimationState();
-    private int idleAnimationTimeout = 0;
     public Vec3 oldvelocity = new Vec3(0,0,0);
     public float drag = 1.09F;
     public float weight = 1.01f;
+    public float bouncyness = 0.9f;
 
     public BallBasics(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
@@ -40,6 +38,9 @@ public class BallBasics extends Monster {
     }
     public void drag(Float counterdrag){
         drag = counterdrag;
+    }
+    public void bouncyness(Float Bouncestrength){
+        bouncyness = Bouncestrength;
     }
 
     @Override
@@ -69,43 +70,24 @@ public class BallBasics extends Monster {
 
     }
 
-
-
-
-
-    private void setupAnimationStates() {
-        if(this.idleAnimationTimeout <= 0) {
-            this.idleAnimationTimeout = 80;
-            this.idleAnimationState.start(this.tickCount);
-        } else {
-            --this.idleAnimationTimeout;
-        }
-    }
-
     @Override
     public void tick() {
         if (this.verticalCollision){
-            this.setDeltaMovement(oldvelocity.x,-oldvelocity.y,oldvelocity.z);
+            this.setDeltaMovement(oldvelocity.x,-oldvelocity.y*bouncyness - 0.01,oldvelocity.z);
         } else if (this.horizontalCollision) {
             if (this.getDeltaMovement().x-oldvelocity.x>0.1){
-                this.setDeltaMovement(-oldvelocity.x, oldvelocity.y, oldvelocity.z);
+                this.setDeltaMovement(-oldvelocity.x*bouncyness, oldvelocity.y, oldvelocity.z);
             } else{
-                this.setDeltaMovement(oldvelocity.x, oldvelocity.y, -oldvelocity.z);
+                this.setDeltaMovement(oldvelocity.x, oldvelocity.y, -oldvelocity.z*bouncyness);
             }
         }
         oldvelocity = this.getDeltaMovement();
         super.tick();
         this.setDeltaMovement(getDeltaMovement().multiply(drag,weight,drag));
 
-        if(this.level().isClientSide()) {
-            this.setupAnimationStates();
-        }
+
 
     }
 
-    @Override
-    public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
-        this.setDeltaMovement(1,1,1);
-        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
-    }
+
 }
