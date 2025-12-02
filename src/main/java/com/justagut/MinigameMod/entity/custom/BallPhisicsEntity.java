@@ -1,5 +1,6 @@
 package com.justagut.MinigameMod.entity.custom;
 
+import com.justagut.MinigameMod.entity.ModEntities;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
@@ -43,28 +44,6 @@ public class BallPhisicsEntity extends Entity {
 
         setDeltaMovement(getDeltaMovement().scale(airdrag));
 
-    }
-
-    @EventBusSubscriber(modid = "minigames")
-    public class ChatListener {
-
-        @SubscribeEvent
-        public void onChat(ServerChatEvent event) {
-            String message = event.getRawText();
-
-            if (message.startsWith("!ballvel")) {
-                String[] parts = message.split(" ");
-
-                switch (parts[1]) {
-                    case "x":
-                        BallPhisicsEntity.this.setDeltaMovement(Double.parseDouble(parts[2]), BallPhisicsEntity.this.getDeltaMovement().y, BallPhisicsEntity.this.getDeltaMovement().z);
-                    case "y":
-                        BallPhisicsEntity.this.setDeltaMovement(BallPhisicsEntity.this.getDeltaMovement().x, Double.parseDouble(parts[2]), BallPhisicsEntity.this.getDeltaMovement().z);
-                    case "z":
-                        BallPhisicsEntity.this.setDeltaMovement(BallPhisicsEntity.this.getDeltaMovement().x, BallPhisicsEntity.this.getDeltaMovement().y, Double.parseDouble(parts[2]));
-                }
-            }
-        }
     }
 
     @Override
