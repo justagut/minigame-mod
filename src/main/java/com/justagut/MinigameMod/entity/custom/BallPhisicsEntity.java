@@ -54,10 +54,13 @@ public class BallPhisicsEntity extends Entity {
                 switch (parts[1]) {
                     case "x":
                         BallPhisicsEntity.this.setDeltaMovement(Double.parseDouble(parts[2]), BallPhisicsEntity.this.getDeltaMovement().y, BallPhisicsEntity.this.getDeltaMovement().z);
+                        break;
                     case "y":
                         BallPhisicsEntity.this.setDeltaMovement(BallPhisicsEntity.this.getDeltaMovement().x, Double.parseDouble(parts[2]), BallPhisicsEntity.this.getDeltaMovement().z);
+                        break;
                     case "z":
                         BallPhisicsEntity.this.setDeltaMovement(BallPhisicsEntity.this.getDeltaMovement().x, BallPhisicsEntity.this.getDeltaMovement().y, Double.parseDouble(parts[2]));
+                        break;
                 }
             }
         }

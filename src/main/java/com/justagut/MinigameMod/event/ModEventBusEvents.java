@@ -13,7 +13,6 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 public class ModEventBusEvents {
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-       event.registerLayerDefinition(MagmaBossModel.LAYER_LOCATION, MagmaBossModel::createBodyLayer);
     }
 
     @SubscribeEvent
