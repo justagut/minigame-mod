@@ -41,30 +41,30 @@ public class BallPhisicsEntity extends Entity {
 
     }
 
-    @EventBusSubscriber(modid = "minigames")
-    public class ChatListener {
+    //@EventBusSubscriber(modid = "minigames")
+    //public class ChatListener {
 
-        @SubscribeEvent
-        public void onChat(ServerChatEvent event) {
-            String message = event.getRawText();
+        //@SubscribeEvent
+        //public void onChat(ServerChatEvent event) {
+            //String message = event.getRawText();
 
-            if (message.startsWith("!ballvel")) {
-                String[] parts = message.split(" ");
+            //if (message.startsWith("!ballvel")) {
+                //String[] parts = message.split(" ");
 
-                switch (parts[1]) {
-                    case "x":
-                        BallPhisicsEntity.this.setDeltaMovement(Double.parseDouble(parts[2]), BallPhisicsEntity.this.getDeltaMovement().y, BallPhisicsEntity.this.getDeltaMovement().z);
-                        break;
-                    case "y":
-                        BallPhisicsEntity.this.setDeltaMovement(BallPhisicsEntity.this.getDeltaMovement().x, Double.parseDouble(parts[2]), BallPhisicsEntity.this.getDeltaMovement().z);
-                        break;
-                    case "z":
-                        BallPhisicsEntity.this.setDeltaMovement(BallPhisicsEntity.this.getDeltaMovement().x, BallPhisicsEntity.this.getDeltaMovement().y, Double.parseDouble(parts[2]));
-                        break;
-                }
-            }
-        }
-    }
+                //switch (parts[1]) {
+                    //case "x":
+                        //BallPhisicsEntity.this.setDeltaMovement(Double.parseDouble(parts[2]), BallPhisicsEntity.this.getDeltaMovement().y, BallPhisicsEntity.this.getDeltaMovement().z);
+                        //break;
+                    //case "y":
+                        //BallPhisicsEntity.this.setDeltaMovement(BallPhisicsEntity.this.getDeltaMovement().x, Double.parseDouble(parts[2]), BallPhisicsEntity.this.getDeltaMovement().z);
+                        //break;
+                    //case "z":
+                        //BallPhisicsEntity.this.setDeltaMovement(BallPhisicsEntity.this.getDeltaMovement().x, BallPhisicsEntity.this.getDeltaMovement().y, Double.parseDouble(parts[2]));
+                        //break;
+                //}
+            //}
+        //}
+    //}
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {}
