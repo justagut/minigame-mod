@@ -21,7 +21,7 @@ public class ModEntities {
                     MobCategory.MONSTER).sized((float)0.5, (float) 0.5).build("tennisball"));
     public static final Supplier<EntityType<TennisBallFromEntity>> TENNISBALLFROMENTITY =
             ENTITY_TYPES.register("tennisballfromentity", () -> EntityType.Builder.of(TennisBallFromEntity::new,
-                    MobCategory.MONSTER).sized((float)0.5, (float) 0.5).build("tennisballfromentity"));
+                    MobCategory.MISC).sized((float)0.5, (float) 0.5).build("tennisballfromentity"));
 
 
     public static void register(IEventBus eventBus) {

@@ -3,6 +3,8 @@ package com.justagut.MinigameMod.entity.custom;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
+import java.security.cert.CertPathBuilder;
+
 public class TennisBallFromEntity extends BallPhisicsEntity{
     public TennisBallFromEntity(EntityType<?> entityType, Level level) {
         super(entityType, level);
@@ -11,6 +13,7 @@ public class TennisBallFromEntity extends BallPhisicsEntity{
         this.bouncyness = 0.7f;
         this.weight = -0.4f;
     }
+
 
 
 }
