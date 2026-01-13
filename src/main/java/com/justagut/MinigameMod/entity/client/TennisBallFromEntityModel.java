@@ -1,18 +1,17 @@
 package com.justagut.MinigameMod.entity.client;
 
-import com.justagut.MinigameMod.entity.custom.TennisBall;
 import com.justagut.MinigameMod.entity.custom.TennisBallFromEntity;
 import com.justagut.MinigameMod.minigamemod;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 
-public class TennisBallFromEntityModel<T extends TennisBallFromEntity> extends HierarchicalModel<T> {
+public class TennisBallFromEntityModel extends EntityModel<TennisBallFromEntity> {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(minigamemod.MODID, "tennisbal"), "main");
     private final ModelPart bone;
@@ -41,13 +40,15 @@ public class TennisBallFromEntityModel<T extends TennisBallFromEntity> extends H
         bone.render(poseStack, vertexConsumer, packedLight, packedOverlay,color);
     }
 
-    @Override
-    public ModelPart root() {
-        return bone;
-    }
 
     @Override
-    public void setupAnim(T t, float v, float v1, float v2, float v3, float v4) {
+    public void setupAnim(TennisBallFromEntity entity,
+                          float limbSwing,
+                          float limbSwingAmount,
+                          float ageInTicks,
+                          float netHeadYaw,
+                          float headPitch) {
 
     }
 }
+

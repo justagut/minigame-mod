@@ -8,13 +8,14 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import org.joml.Matrix4f;
 
 public class TennisBallFromEntityRenderer extends EntityRenderer<TennisBallFromEntity> {
 
     private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(minigamemod.MODID, "textures/entity/simple_entity.png");
+            ResourceLocation.fromNamespaceAndPath(minigamemod.MODID, "textures/entity/tennisbal_texture.png");
 
     public TennisBallFromEntityRenderer(EntityRendererProvider.Context context) {
         super(context);
@@ -46,22 +47,26 @@ public class TennisBallFromEntityRenderer extends EntityRenderer<TennisBallFromE
         vertexConsumer.addVertex(pose, -0.5F, -0.5F, 0.0F)
                 .setColor(255, 255, 255, 255)
                 .setUv(0.0F, 1.0F)
-                .setUv2(blockLight, skyLight);
+                .setUv2(blockLight, skyLight)
+                .setNormal(pose, 0.0F, 0.0F, 1.0F);
 
         vertexConsumer.addVertex(pose, 0.5F, -0.5F, 0.0F)
                 .setColor(255, 255, 255, 255)
                 .setUv(1.0F, 1.0F)
-                .setUv2(blockLight, skyLight);
+                .setUv2(blockLight, skyLight)
+                .setNormal(pose, 0.0F, 0.0F, 1.0F);
 
         vertexConsumer.addVertex(pose, 0.5F, 0.5F, 0.0F)
                 .setColor(255, 255, 255, 255)
                 .setUv(1.0F, 0.0F)
-                .setUv2(blockLight, skyLight);
+                .setUv2(blockLight, skyLight)
+                .setNormal(pose, 0.0F, 0.0F, 1.0F);
 
         vertexConsumer.addVertex(pose, -0.5F, 0.5F, 0.0F)
                 .setColor(255, 255, 255, 255)
                 .setUv(0.0F, 0.0F)
-                .setUv2(blockLight, skyLight);
+                .setUv2(blockLight, skyLight)
+                .setNormal(pose, 0.0F, 0.0F, 1.0F);
 
         poseStack.popPose();
 
