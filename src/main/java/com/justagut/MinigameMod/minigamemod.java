@@ -3,7 +3,7 @@ package com.justagut.MinigameMod;
 //hoi
 import com.justagut.MinigameMod.block.ModBlocks;
 import com.justagut.MinigameMod.entity.ModEntities;
-import com.justagut.MinigameMod.entity.client.TennisBallRenderer;
+import com.justagut.MinigameMod.entity.custom.TennisBall;
 import com.justagut.MinigameMod.item.ModItems;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -84,7 +84,7 @@ public class minigamemod {
         public static void onClientSetup(FMLClientSetupEvent event) {
 
 
-           EntityRenderers.register(ModEntities.TENNISBALL.get(), TennisBallRenderer::new);
+           //EntityRenderers.register(ModEntities.TENNISBALL.get(), TennisBallRenderer::new);
         }
     }
 

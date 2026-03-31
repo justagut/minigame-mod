@@ -38,33 +38,14 @@ public class BallPhisicsEntity extends Entity {
 
 
         if (this.onGround()) {
+            if (getDeltaMovement().y < 2) {
+                setDeltaMovement(getDeltaMovement().x, 0, getDeltaMovement().z);
+            }
             setDeltaMovement(getDeltaMovement().x * grounddrag, -getDeltaMovement().y * bouncyness, getDeltaMovement().z * grounddrag);
         }
 
         setDeltaMovement(getDeltaMovement().scale(airdrag));
 
-    }
-
-    @EventBusSubscriber(modid = "minigames")
-    public class ChatListener {
-
-        @SubscribeEvent
-        public void onChat(ServerChatEvent event) {
-            String message = event.getRawText();
-
-            if (message.startsWith("!ballvel")) {
-                String[] parts = message.split(" ");
-
-                switch (parts[1]) {
-                    case "x":
-                        BallPhisicsEntity.this.setDeltaMovement(Double.parseDouble(parts[2]), BallPhisicsEntity.this.getDeltaMovement().y, BallPhisicsEntity.this.getDeltaMovement().z);
-                    case "y":
-                        BallPhisicsEntity.this.setDeltaMovement(BallPhisicsEntity.this.getDeltaMovement().x, Double.parseDouble(parts[2]), BallPhisicsEntity.this.getDeltaMovement().z);
-                    case "z":
-                        BallPhisicsEntity.this.setDeltaMovement(BallPhisicsEntity.this.getDeltaMovement().x, BallPhisicsEntity.this.getDeltaMovement().y, Double.parseDouble(parts[2]));
-                }
-            }
-        }
     }
 
     @Override
