@@ -18,7 +18,6 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
@@ -82,7 +81,7 @@ public class BallBasics extends Monster {
         if (this.verticalCollision){
             this.setDeltaMovement(oldvelocity.x,-oldvelocity.y*bouncyness - 0.01,oldvelocity.z);
         }
-        if (this.horizontalCollision && oldpos!= new BlockPos(0, 1000, 0)) {
+        if (this.horizontalCollision && oldpos!= new BlockPos(0, 1000, 0) && false) {
             newpos = this.blockPosition();
             oldpos = new BlockPos(oldpos.getX(),newpos.getY(),oldpos.getZ());
             diffpos = new BlockPos
@@ -98,9 +97,11 @@ public class BallBasics extends Monster {
             if (xcol && !zcol){
                 this.setDeltaMovement(-oldvelocity.x*bouncyness,-oldvelocity.y,oldvelocity.z);
             }
+            System.out.println("x"+ diffpos.getX() +  ",z" + diffpos.getZ());
         }
         oldvelocity = this.getDeltaMovement();
         super.tick();
+        System.out.println(getDeltaMovement());
         this.setDeltaMovement(oldvelocity.multiply(drag,weight,drag));
         this.setDeltaMovement(getDeltaMovement().x,getDeltaMovement().y - gravitystrenght,getDeltaMovement().z);
         oldpos = this.blockPosition();
