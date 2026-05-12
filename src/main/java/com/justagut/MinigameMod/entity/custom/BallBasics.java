@@ -33,6 +33,7 @@ public class BallBasics extends Monster {
     Level level = this.level();
     public boolean xcol = false;
     public boolean zcol = false;
+    public Vec3 oldposition = new Vec3(0,0,0);
 
     public BallBasics(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
@@ -78,32 +79,16 @@ public class BallBasics extends Monster {
 
     @Override
     public void tick() {
+
         if (this.verticalCollision){
-            this.setDeltaMovement(oldvelocity.x,-oldvelocity.y*bouncyness - 0.01,oldvelocity.z);
+            this.setDeltaMovement(this.getDeltaMovement().x,-this.getDeltaMovement().y*bouncyness - 0.01,this.getDeltaMovement().z);
         }
-        if (this.horizontalCollision && oldpos!= new BlockPos(0, 1000, 0) && false) {
-            newpos = this.blockPosition();
-            oldpos = new BlockPos(oldpos.getX(),newpos.getY(),oldpos.getZ());
-            diffpos = new BlockPos
-                    (newpos.getX() - oldpos.getX(), 0, newpos.getZ() - oldpos.getZ());
-            xcol = diffpos.getX() != 0 && level.getBlockState(new BlockPos(oldpos.getX(), newpos.getY(), newpos.getZ())).isSolid();
-            zcol = diffpos.getZ() != 0 && level.getBlockState(new BlockPos(newpos.getX(), newpos.getY(), oldpos.getZ())).isSolid();
-            if ((!xcol && !zcol) || (xcol && zcol)){
-                this.setDeltaMovement(-oldvelocity.x*bouncyness,oldvelocity.y,-oldvelocity.z*bouncyness);
-            }
-            if (!xcol && zcol){
-                this.setDeltaMovement(oldvelocity.x,-oldvelocity.y,-oldvelocity.z*bouncyness);
-            }
-            if (xcol && !zcol){
-                this.setDeltaMovement(-oldvelocity.x*bouncyness,-oldvelocity.y,oldvelocity.z);
-            }
-            System.out.println("x"+ diffpos.getX() +  ",z" + diffpos.getZ());
+        if (this.horizontalCollision) {
+            this.setDeltaMovement(-getDeltaMovement().x,this.getDeltaMovement().y, -this.getDeltaMovement().z);
         }
         oldvelocity = this.getDeltaMovement();
         super.tick();
-        System.out.println(getDeltaMovement());
-        this.setDeltaMovement(oldvelocity.multiply(drag,weight,drag));
-        this.setDeltaMovement(getDeltaMovement().x,getDeltaMovement().y - gravitystrenght,getDeltaMovement().z);
-        oldpos = this.blockPosition();
+        this.setDeltaMovement(oldvelocity.x * drag, oldvelocity.y*weight - 0.03,oldvelocity.z*drag);
+
     }
 }
