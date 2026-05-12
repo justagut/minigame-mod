@@ -36,14 +36,14 @@ public class TennisBall extends BallBasics{
         if (gettinghit == 2) {
             this.setPos(oldpos);
             ++tickcount;
-            if (tickcount == 25 || !player.swinging){
+            if (tickcount > 100 || !player.onGround()){
                 gettinghit = 1;
             }
             oldpos = this.position();
             player.sendSystemMessage(Component.literal((String.valueOf(tickcount))));
         }
         else if(gettinghit == 1){
-            tickcount /= (float) 25;
+            tickcount /= (float) 200;
             tickcount = (float)1.1-tickcount;
             this.setDeltaMovement(player.getLookAngle().multiply(tickcount,tickcount,tickcount));
             gettinghit = 0;
