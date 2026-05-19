@@ -39,6 +39,9 @@ public class BallPhisicsEntity extends Entity {
 
 
         if (this.onGround()) {
+            if (getDeltaMovement().y < 2) {
+                setDeltaMovement(getDeltaMovement().x, 0, getDeltaMovement().z);
+            }
             setDeltaMovement(getDeltaMovement().x * grounddrag, -getDeltaMovement().y * bouncyness, getDeltaMovement().z * grounddrag);
         }
 

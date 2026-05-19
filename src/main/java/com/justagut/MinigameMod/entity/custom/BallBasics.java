@@ -1,6 +1,5 @@
 package com.justagut.MinigameMod.entity.custom;
 
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Position;
 import net.minecraft.world.DifficultyInstance;

@@ -25,6 +25,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BRICKIFIER);
                         output.accept(ModItems.TENNIS_RACKET);
                         output.accept(ModItems.PLASTIC_PLATE);
+                        output.accept(ModItems.LASERGUN);
+
+                        output.accept(ModItems.LASERGAME_HELMET);
+                        output.accept(ModItems.LASERGAME_CHESTPLATE);
+                        output.accept(ModItems.LASERGAME_LEGGINGS);
+                        output.accept(ModItems.LASERGAME_BOOTS);
                     })
                     .build());
 

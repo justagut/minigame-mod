@@ -1,6 +1,7 @@
 package com.justagut.MinigameMod.entity;
 
 
+import com.justagut.MinigameMod.entity.custom.BallPhisicsEntity;
 import com.justagut.MinigameMod.entity.custom.TennisBall;
 import com.justagut.MinigameMod.entity.custom.TennisBallFromEntity;
 import com.justagut.MinigameMod.minigamemod;
