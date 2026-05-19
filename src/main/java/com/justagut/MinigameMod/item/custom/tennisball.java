@@ -9,20 +9,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 
-import java.util.Map;
+public class tennisball extends Item{
 
-public class brickifier extends Item{
-    private static final Map<Block,Block> BRICK_MAP =
-            Map.of(
-                    Blocks.STONE, Blocks.STONE_BRICKS,
-                    Blocks.END_STONE, Blocks.END_STONE_BRICKS,
-                    Blocks.DEEPSLATE, Blocks.DEEPSLATE_BRICKS,
-                    Blocks.DIRT, Blocks.DIAMOND_BLOCK
-
-            );
-    public brickifier(Properties properties) {
+    public tennisball(Properties properties) {
         super(properties);
     }
 
@@ -32,7 +22,6 @@ public class brickifier extends Item{
         Block clickedBlock = level.getBlockState(context.getClickedPos()).getBlock();
 
         if (!level.isClientSide()){
-            level.setBlockAndUpdate(context.getClickedPos(),BRICK_MAP.get(clickedBlock).defaultBlockState());
             context.getItemInHand().hurtAndBreak
                     (1,((ServerLevel) level), context.getPlayer(),
                             item -> context.getPlayer().onEquippedItemBroken(item, EquipmentSlot.MAINHAND));

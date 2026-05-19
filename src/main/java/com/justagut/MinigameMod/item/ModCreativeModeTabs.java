@@ -22,7 +22,7 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.minigames.general_items"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.BISMUTH);
-                        output.accept(ModItems.BRICKIFIER);
+                        output.accept(ModItems.TENNISBALL);
                         output.accept(ModItems.TENNIS_RACKET);
                         output.accept(ModItems.PLASTIC_PLATE);
                         output.accept(ModItems.LASERGUN);

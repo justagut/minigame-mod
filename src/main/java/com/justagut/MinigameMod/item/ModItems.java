@@ -2,7 +2,7 @@ package com.justagut.MinigameMod.item;
 
 import com.justagut.MinigameMod.item.custom.lasergun;
 import com.justagut.MinigameMod.minigamemod;
-import com.justagut.MinigameMod.item.custom.brickifier;
+import com.justagut.MinigameMod.item.custom.tennisball;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
@@ -14,8 +14,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> BISMUTH = ITEMS.register
             ("bismuth", ()-> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> BRICKIFIER = ITEMS.register
-            ("brickifier", ()-> new brickifier(new Item.Properties().durability(32)));
+    public static final DeferredItem<Item> TENNISBALL = ITEMS.register
+            ("tennisball", ()-> new tennisball(new Item.Properties()));
     public static final DeferredItem<Item> PLASTIC_PLATE = ITEMS.register
             ("plastic_plate", ()-> new Item(new Item.Properties()));
     public static final DeferredItem<Item> TENNIS_RACKET = ITEMS.register
