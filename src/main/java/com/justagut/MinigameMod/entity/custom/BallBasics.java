@@ -2,27 +2,27 @@ package com.justagut.MinigameMod.entity.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Position;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
-public class BallBasics extends Monster {
+public class BallBasics extends Animal {
     public Vec3 oldvelocity = new Vec3(0,0,0);
-    public float drag = 0.95F;
+    public float drag = 0.975F;
     public float weight = 1f;
     public float bouncyness = 0.8f;
     public float gravitystrenght = 0.05f;
@@ -34,7 +34,7 @@ public class BallBasics extends Monster {
     public boolean zcol = false;
     public Vec3 oldposition = new Vec3(0,0,0);
 
-    public BallBasics(EntityType<? extends Monster> entityType, Level level) {
+    public BallBasics(EntityType<? extends Animal> entityType, Level level) {
         super(entityType, level);
         this.xpReward = 0;
         this.fireImmune();
@@ -89,5 +89,15 @@ public class BallBasics extends Monster {
         super.tick();
         this.setDeltaMovement(oldvelocity.x * drag, oldvelocity.y*weight - 0.03,oldvelocity.z*drag);
 
+    }
+
+    @Override
+    public boolean isFood(ItemStack itemStack) {
+        return false;
+    }
+
+    @Override
+    public @Nullable AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
+        return null;
     }
 }
