@@ -8,5 +8,7 @@
   "block.minigames.gold_blackstone_bricks": "Gold Blackstone Bricks",
 
   "creativetab.minigames.general_items": "General Items",
-  "creativetab.minigames.bismuth_blocks": "Bismuth Blocks"
+  "creativetab.minigames.bismuth_blocks": "Bismuth Blocks",
+
+  "entity.minigames.tennisball": "Tennis Ball"
 }

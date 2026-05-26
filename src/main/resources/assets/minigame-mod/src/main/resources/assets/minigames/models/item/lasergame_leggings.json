@@ -1,6 +1,3 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "minigames:models/armor/lasergame_layer_2"
-  }
+  "_disabled": "Duplicate nested resource (original is at src/main/resources/assets/minigames/models/item/lasergame_leggings.json). This file was disabled to avoid packaging conflicts."
 }
