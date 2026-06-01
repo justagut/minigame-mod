@@ -42,11 +42,10 @@ public class TennisBall extends BallBasics{
                 gettinghit = 1;
             }
             oldpos = this.position();
-            player.sendSystemMessage(Component.literal((String.valueOf(tickcount))));
         }
         else if(gettinghit == 1){
             tickcount /= (float) 60;
-            tickcount = (float)2-tickcount;
+            tickcount = (float)1-tickcount;
             this.setDeltaMovement(player.getLookAngle().multiply(tickcount,tickcount,tickcount));
             gettinghit = 0;
         }

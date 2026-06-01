@@ -33,7 +33,7 @@ public class TennisBallModel<T extends TennisBall> extends EntityModel<T> {
 		.texOffs(0, 10).addBox(-0.5F, -7.5F, -0.5F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F))
 		.texOffs(0, 14).addBox(-0.5F, -7.5F, -2.5F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F))
 		.texOffs(8, 10).addBox(-0.5F, -8.5F, -1.5F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F))
-		.texOffs(12, 0).addBox(-0.5F, -6.5F, -1.5F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-0.5F, 12F, 0.5F));
+		.texOffs(12, 0).addBox(-0.5F, -6.5F, -1.5F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-0.5F, 8F, 0.5F));
 
 		return LayerDefinition.create(meshdefinition, 32, 32);
 	}
