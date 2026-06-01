@@ -2,13 +2,14 @@ package com.justagut.MinigameMod.entity.custom;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 public class TennisBall extends BallBasics{
-    public TennisBall(EntityType<? extends Monster> entityType, Level level) {
+    public TennisBall(EntityType<? extends Animal> entityType, Level level) {
         super(entityType, level);
     }
     public float gettinghit = 0;
@@ -29,25 +30,25 @@ public class TennisBall extends BallBasics{
 
     @Override
     public void bouncyness(Float Bouncestrength) {
-        super.bouncyness(0.9f);
+        super.bouncyness(1111f);
     }
 
     public void tick(){
+        super.tick();
         if (gettinghit == 2) {
             this.setPos(oldpos);
             ++tickcount;
-            if (tickcount == 25 || !player.swinging){
+            if (tickcount > 100 || !player.onGround()){
                 gettinghit = 1;
             }
             oldpos = this.position();
-            player.sendSystemMessage(Component.literal((String.valueOf(tickcount))));
         }
         else if(gettinghit == 1){
-            tickcount /= (float) 25;
-            tickcount = (float)1.1-tickcount;
+            tickcount /= (float) 60;
+            tickcount = (float)1-tickcount;
             this.setDeltaMovement(player.getLookAngle().multiply(tickcount,tickcount,tickcount));
             gettinghit = 0;
         }
-        super.tick();
+
     }
 }
