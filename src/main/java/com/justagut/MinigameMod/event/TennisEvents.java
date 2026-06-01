@@ -27,6 +27,7 @@ public class TennisEvents {
             tennisBall.oldpos = tennisBall.position();
             tennisBall.player = event.getEntity();
             TennisBall.tickcount = 0;
+            System.out.println("dihgger");
             event.setCanceled(true);
         }
     }

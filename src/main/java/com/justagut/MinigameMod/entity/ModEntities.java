@@ -1,9 +1,7 @@
 package com.justagut.MinigameMod.entity;
 
 
-import com.justagut.MinigameMod.entity.custom.BallPhisicsEntity;
 import com.justagut.MinigameMod.entity.custom.TennisBall;
-import com.justagut.MinigameMod.entity.custom.TennisBallFromEntity;
 import com.justagut.MinigameMod.minigamemod;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
@@ -20,9 +18,6 @@ public class ModEntities {
     public static final Supplier<EntityType<TennisBall>> TENNISBALL =
            ENTITY_TYPES.register("tennisball", () -> EntityType.Builder.of(TennisBall::new,
                     MobCategory.MONSTER).sized((float)0.5, (float) 0.5).build("tennisball"));
-    public static final Supplier<EntityType<TennisBallFromEntity>> TENNISBALLFROMENTITY =
-            ENTITY_TYPES.register("tennisballfromentity", () -> EntityType.Builder.of(TennisBallFromEntity::new,
-                    MobCategory.MISC).sized((float)0.5, (float) 0.5).build("tennisballfromentity"));
 
 
     public static void register(IEventBus eventBus) {
